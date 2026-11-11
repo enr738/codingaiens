@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>استمارة الانضمام لنادي البرمجة والذكاء الاصطناعي - نماذج Google</title>
+  <meta name="description" content="استمارة التسجيل الرسمية لنادي البرمجة والذكاء الاصطناعي Coding AI - نموذج Google الرسمي.">
+
+  <!-- Favicon - Google Forms Purple Icon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23673ab7'><path d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z'/></svg>">
+
+  <!-- Google Fonts: Roboto & Cairo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Google+Sans:wght@400;500;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <!-- Tailwind Configuration matching Google Forms Palette -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Cairo', 'Roboto', 'Google Sans', 'sans-serif'],
+          },
+          colors: {
+            gfPurple: {
+              DEFAULT: '#673ab7',
+              hover: '#5e35b1',
+              light: '#ede7f6',
+              border: '#7c4dff',
+              dark: '#512da8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    * {
+      font-family: 'Cairo', 'Roboto', sans-serif;
+    }
+
+    /* Google Forms Short Answer Underline */
+    .gf-input-underline {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #dadce0;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .dark .gf-input-underline {
+      border-bottom-color: #5f6368;
+    }
+    .gf-input-underline:focus {
+      outline: none;
+      border-bottom: 2px solid #673ab7;
+    }
+    .dark .gf-input-underline:focus {
+      border-bottom-color: #9c27b0;
+    }
+
+    /* Active Question Card Highlight (Google Forms Colored Border in RTL) */
+    .form-card {
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      position: relative;
+    }
+    .form-card.active-card {
+      border-right: 6px solid #673ab7 !important;
+      box-shadow: 0 1px 3px 0 rgba(60,64,67,.3), 0 4px 8px 3px rgba(60,64,67,.15);
+    }
+    .dark .form-card.active-card {
+      border-right-color: #9c27b0 !important;
+    }
+
+    /* Google Forms Radio */
+    .gf-radio {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #5f6368;
+      border-radius: 50%;
+      outline: none;
+      cursor: pointer;
+      display: inline-grid;
+      place-content: center;
+      transition: all 0.15s ease-in-out;
+      background-color: transparent;
+      flex-shrink: 0;
+    }
+    .dark .gf-radio {
+      border-color: #9aa0a6;
+    }
+    .gf-radio:hover {
+      border-color: #673ab7;
+    }
+    .gf-radio:checked {
+      border-color: #673ab7;
+    }
+    .dark .gf-radio:checked {
+      border-color: #b388ff;
+    }
+    .gf-radio::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      background-color: #673ab7;
+    }
+    .dark .gf-radio::before {
+      background-color: #b388ff;
+    }
+    .gf-radio:checked::before {
+      transform: scale(1);
+    }
+
+    /* Google Forms Checkbox */
+    .gf-checkbox {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 19px;
+      height: 19px;
+      border: 2px solid #5f6368;
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+      display: inline-grid;
+      place-content: center;
+      transition: all 0.15s ease-in-out;
+      background-color: transparent;
+      flex-shrink: 0;
+    }
+    .dark .gf-checkbox {
+      border-color: #9aa0a6;
+    }
+    .gf-checkbox:hover {
+      border-color: #673ab7;
+    }
+    .gf-checkbox:checked {
+      background-color: #673ab7;
+      border-color: #673ab7;
+    }
+    .dark .gf-checkbox:checked {
+      background-color: #b388ff;
+      border-color: #b388ff;
+    }
+    .gf-checkbox::after {
+      content: "";
+      width: 5px;
+      height: 9px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg) scale(0);
+      margin-bottom: 2px;
+      transition: 120ms transform ease-in-out;
+    }
+    .dark .gf-checkbox::after {
+      border-color: #121212;
+    }
+    .gf-checkbox:checked::after {
+      transform: rotate(45deg) scale(1);
+    }
+  </style>
+</head>
+
+<body class="bg-[#ede7f6] dark:bg-[#18191a] text-[#202124] dark:text-[#e4e6eb] min-h-screen py-4 sm:py-6 px-3 sm:px-4 transition-colors duration-200">
+
+  <!-- ============================================================ -->
+  <!-- 1. GOOGLE FIRST-TIME ACCOUNT SIGN-IN MODAL (يظهر لأول مرة عند فتح الرابط) -->
+  <!-- ============================================================ -->
+  <div id="google-first-time-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs hidden opacity-0 transition-opacity duration-300">
+    <div class="w-full max-w-md bg-white dark:bg-[#242526] rounded-2xl border border-gray-200 dark:border-gray-700 p-6 sm:p-8 shadow-2xl text-center">
+      
+      <!-- Google Logo -->
+      <div class="flex justify-center mb-4">
+        <svg class="w-8 h-8" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+        </svg>
+      </div>
+
+      <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-1">تسجيل الدخول إلى Google</h3>
+      <p class="text-xs text-gray-500 dark:text-gray-400 mb-6">
+        للمتابعة إلى نموذج استمارة نادي البرمجة والذكاء الاصطناعي (Coding AI)
+      </p>
+
+      <form onsubmit="handleGoogleFirstTimeSubmit(event)" class="space-y-4 text-right">
+        <div>
+          <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+            البريد الإلكتروني أو الحساب الجامعي:
+          </label>
+          <input type="email" id="google-first-time-email" required placeholder="example@gmail.com" dir="ltr"
+            class="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-xs text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#673ab7]">
+        </div>
+
+        <div class="flex items-center gap-2 pt-2">
+          <button type="submit" class="flex-1 py-2.5 rounded-lg bg-[#673ab7] hover:bg-[#5e35b1] text-white text-xs font-bold shadow transition-colors flex items-center justify-center gap-2">
+            <span>متابعة إلى النموذج</span>
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <p class="text-[11px] text-gray-400 text-center pt-2">
+          يتم تذكر حسابك محلياً على هذا الجهاز لإكمال النموذج بنمط نماذج Google الرسمي.
+        </p>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- TOP DISCRETE TOOLBAR (يظهر فيه الحساب بعد الدخول لأول مرة + المظهر + لوحة الأدمن) -->
+  <!-- ============================================================ -->
+  <div class="max-w-[770px] mx-auto flex items-center justify-between mb-3 text-xs text-slate-500 dark:text-slate-400 px-1">
+    
+    <!-- Google Forms Branding & Current User Account Pill -->
+    <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1.5 font-medium text-slate-700 dark:text-slate-300">
+        <svg class="w-4 h-4 text-[#673ab7] dark:text-[#b388ff]" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+        </svg>
+        <span class="hidden sm:inline font-bold">نماذج Google</span>
+      </div>
+
+      <!-- User Account Display (يظهر هنا في الأعلى بهدوء بعد أول دخول) -->
+      <div id="top-user-account-pill" class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white dark:bg-[#242526] border border-gray-200 dark:border-gray-700 text-[11px] text-gray-600 dark:text-gray-300 shadow-2xs">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 flex-shrink-0"></span>
+        <span id="current-signed-email" class="font-medium max-w-[130px] sm:max-w-[200px] truncate" dir="ltr">طالب النادي</span>
+        <button onclick="promptSwitchAccount()" title="تبديل الحساب" class="text-[#673ab7] dark:text-[#b388ff] hover:underline mr-0.5 font-bold">
+          تبديل
+        </button>
+      </div>
+    </div>
+
+    <!-- Right Controls: Admin Button & Theme Toggle -->
+    <div class="flex items-center gap-2">
+      <!-- Quiet Admin Dashboard Button (لا يعرض كلمة المرور أبداً) -->
+      <button onclick="openAdminAuthModal()" class="flex items-center gap-1 px-2.5 py-1 rounded hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-slate-600 dark:text-slate-300">
+        <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+        <span>لوحة الأدمن</span>
+      </button>
+
+      <!-- Theme Toggle -->
+      <button onclick="toggleTheme()" aria-label="تبديل المظهر" class="p-1.5 rounded hover:bg-black/5 dark:hover:bg-white/10 transition-colors text-slate-600 dark:text-slate-300">
+        <i id="theme-toggle-dark-icon" data-lucide="moon" class="w-4 h-4 hidden"></i>
+        <i id="theme-toggle-light-icon" data-lucide="sun" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN GOOGLE FORMS CONTAINER (Exact Max-Width 770px) -->
+  <div class="max-w-[770px] mx-auto">
+
+    <!-- ============================================================ -->
+    <!-- BANNER IMAGE (Official Google Forms Purple Tech Banner) -->
+    <!-- ============================================================ -->
+    <div class="w-full rounded-t-lg overflow-hidden bg-gradient-to-r from-[#673ab7] via-[#512da8] to-[#311b92] shadow-sm relative h-36 sm:h-44 flex items-center justify-center p-4">
+      <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 20% 50%, #ffffff 1px, transparent 1px), radial-gradient(circle at 80% 30%, #ffffff 1.5px, transparent 1.5px); background-size: 24px 24px;"></div>
+      
+      <div class="relative text-center text-white z-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-semibold backdrop-blur-sm mb-2">
+          <span>المدرسة العليا للأساتذة — ENS</span>
+        </div>
+        <h1 class="text-xl sm:text-3xl font-bold tracking-tight">نادي البرمجة والذكاء الاصطناعي</h1>
+        <p class="text-xs sm:text-sm text-purple-200 mt-1 font-medium">Coding AI Club • استمارة الانضمام الرسمية</p>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- FORM BODY WRAPPER -->
+    <!-- ============================================================ -->
+    <form id="google-forms-app" onsubmit="handleFormSubmit(event)">
+
+      <!-- CARD 0: FORM TITLE & INTRO CARD -->
+      <div class="form-card active-card bg-white dark:bg-[#242526] rounded-b-lg border-t-[10px] border-[#673ab7] dark:border-[#9c27b0] border-x border-b border-gray-200 dark:border-[#3a3b3c] p-6 sm:p-7 mb-3 shadow-sm">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-[#202124] dark:text-white mb-3">
+          نادي البرمجة والذكاء الاصطناعي Coding AI
+        </h2>
+
+        <!-- The exact welcome paragraph -->
+        <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+          🚀 أهلاً بك في نادي البرمجة والذكاء الاصطناعي Coding AI! نحن نفتح باب الانضمام لجميع طلبة المدرسة الراغبين في صقل مهاراتهم، بناء مشاريع تقنية مبتكرة، والانضمام إلى مجتمع رقمي نشط. سجل بياناتك الآن وكن جزءاً من المستقبل!
+        </p>
+
+        <div class="pt-3 border-t border-gray-200 dark:border-gray-700 text-xs text-red-600 dark:text-red-400 font-medium">
+          * يشير إلى أن السؤال مطلوب
+        </div>
+      </div>
+
+      <!-- CARD 1: 👤 الاسم الكامل * -->
+      <div class="form-card bg-white dark:bg-[#242526] rounded-lg border border-gray-200 dark:border-[#3a3b3c] p-5 sm:p-6 mb-3 shadow-sm">
+        <label for="q_fullname" class="block text-base font-normal text-[#202124] dark:text-white mb-4">
+          👤 الاسم الكامل <span class="text-red-600 font-bold">*</span>
+        </label>
+        <input type="text" id="q_fullname" name="fullName" required placeholder="إجابتك"
+          class="gf-input-underline w-full sm:w-3/5 text-sm py-1.5 text-[#202124] dark:text-white placeholder-gray-400">
+      </div>
+
+      <!-- CARD 2: 🎓 القسم / التخصص الدراسي * -->
+      <div class="form-card bg-white dark:bg-[#242526] rounded-lg border border-gray-200 dark:border-[#3a3b3c] p-5 sm:p-6 mb-3 shadow-sm">
+        <label for="q_major" class="block text-base font-normal text-[#202124] dark:text-white mb-4">
+          🎓 القسم / التخصص الدراسي <span class="text-red-600 font-bold">*</span>
+        </label>
+        <input type="text" id="q_major" name="major" required placeholder="إجابتك (مثال: إعلام آلي، رياضيات، علوم...)"
+          class="gf-input-underline w-full sm:w-3/5 text-sm py-1.5 text-[#202124] dark:text-white placeholder-gray-400">
+      </div>
+
+      <!-- CARD 3: 🎓 السنة الدراسية * (Radio Buttons) -->
+      <div class="form-card bg-white dark:bg-[#242526] rounded-lg border border-gray-200 dark:border-[#3a3b3c] p-5 sm:p-6 mb-3 shadow-sm">
+        <label class="block text-base font-normal text-[#202124] dark:text-white mb-4">
+          🎓 السنة الدراسية <span class="text-red-600 font-bold">*</span>
+        </label>
+        <div class="space-y-3.5">
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="academicYear" value="سنة أولى" required class="gf-radio">
+            <span>سنة أولى</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="academicYear" value="سنة ثانية" class="gf-radio">
+            <span>سنة ثانية</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="academicYear" value="سنة ثالثة" class="gf-radio">
+            <span>سنة ثالثة</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="academicYear" value="سنة رابعة" class="gf-radio">
+            <span>سنة رابعة</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="academicYear" value="سنة خامسة" class="gf-radio">
+            <span>سنة خامسة</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="academicYear" value="ماستر" class="gf-radio">
+            <span>ماستر</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- CARD 4: ✈️ يوزرك على تلغرام * (بديل الهاتف والإيميل بناء على طلبك) -->
+      <div class="form-card bg-white dark:bg-[#242526] rounded-lg border border-gray-200 dark:border-[#3a3b3c] p-5 sm:p-6 mb-3 shadow-sm">
+        <label for="q_telegram" class="block text-base font-normal text-[#202124] dark:text-white mb-2">
+          ✈️ يوزرك على تلغرام <span class="text-red-600 font-bold">*</span>
+        </label>
+        <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">وسيلة التواصل الرسمية الأساسية معك لإضافتك لقنوات ومجموعات النادي (مثال: @username)</p>
+        <div class="relative w-full sm:w-3/5">
+          <input type="text" id="q_telegram" name="telegramUser" required placeholder="@username" dir="ltr"
+            class="gf-input-underline w-full text-sm py-1.5 text-[#202124] dark:text-white placeholder-gray-400 font-mono text-right">
+        </div>
+      </div>
+
+      <!-- CARD 5: 💡 هل لديك خبرة سابقة في البرمجة أو الذكاء الاصطناعي؟ * -->
+      <div class="form-card bg-white dark:bg-[#242526] rounded-lg border border-gray-200 dark:border-[#3a3b3c] p-5 sm:p-6 mb-3 shadow-sm">
+        <label class="block text-base font-normal text-[#202124] dark:text-white mb-4">
+          💡 هل لديك خبرة سابقة في البرمجة أو الذكاء الاصطناعي؟ <span class="text-red-600 font-bold">*</span>
+        </label>
+        <div class="space-y-3.5">
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="hasExperience" value="نعم" required class="gf-radio">
+            <span>نعم</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="hasExperience" value="لا" class="gf-radio">
+            <span>لا</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- CARD 6: 🧩 إذا كانت الإجابة نعم، ما هي اللغات أو التقنيات التي تعرفها؟ (اختياري) -->
+      <div class="form-card bg-white dark:bg-[#242526] rounded-lg border border-gray-200 dark:border-[#3a3b3c] p-5 sm:p-6 mb-3 shadow-sm">
+        <label for="q_knownTech" class="block text-base font-normal text-[#202124] dark:text-white mb-4">
+          🧩 إذا كانت الإجابة نعم، ما هي اللغات أو التقنيات التي تعرفها؟
+        </label>
+        <input type="text" id="q_knownTech" name="knownTech" placeholder="إجابتك"
+          class="gf-input-underline w-full sm:w-3/5 text-sm py-1.5 text-[#202124] dark:text-white placeholder-gray-400">
+      </div>
+
+      <!-- CARD 7: 🧭 ما المجالات التي تثير اهتمامك أكثر؟ * (Checkboxes) -->
+      <div class="form-card bg-white dark:bg-[#242526] rounded-lg border border-gray-200 dark:border-[#3a3b3c] p-5 sm:p-6 mb-3 shadow-sm">
+        <label class="block text-base font-normal text-[#202124] dark:text-white mb-4">
+          🧭 ما المجالات التي تثير اهتمامك أكثر؟ <span class="text-red-600 font-bold">*</span>
+        </label>
+        <div class="space-y-3.5" id="interest-domains-group">
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="interestDomains" value="🐺 الذكاء الاصطناعي" class="gf-checkbox">
+            <span>🐺 الذكاء الاصطناعي</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="interestDomains" value="🌐 تطوير الويب" class="gf-checkbox">
+            <span>🌐 تطوير الويب</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="interestDomains" value="📱 تطوير تطبيقات الموبايل" class="gf-checkbox">
+            <span>📱 تطوير تطبيقات الموبايل</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="interestDomains" value="🔐 الأمن السيبراني" class="gf-checkbox">
+            <span>🔐 الأمن السيبراني</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="interestDomains" value="📊 تحليل البيانات" class="gf-checkbox">
+            <span>📊 تحليل البيانات</span>
+          </label>
+          <div class="flex items-center gap-3 text-sm text-[#202124] dark:text-gray-200 pt-0.5">
+            <input type="checkbox" id="cb_domain_other" name="interestDomains" value="أخرى" class="gf-checkbox" onchange="toggleOtherInput('cb_domain_other', 'q_domain_other_text')">
+            <span class="cursor-pointer" onclick="document.getElementById('cb_domain_other').click()">💬 أخرى:</span>
+            <input type="text" id="q_domain_other_text" placeholder="حدد مجالاً آخر" class="gf-input-underline flex-1 text-sm py-1 placeholder-gray-400">
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 8: 🙋‍♂️ هل ترغب في المشاركة في لجان تنظيم الأنشطة؟ * (Radio Buttons) -->
+      <div class="form-card bg-white dark:bg-[#242526] rounded-lg border border-gray-200 dark:border-[#3a3b3c] p-5 sm:p-6 mb-3 shadow-sm">
+        <label class="block text-base font-normal text-[#202124] dark:text-white mb-4">
+          🙋‍♂️ هل ترغب في المشاركة في لجان تنظيم الأنشطة (ورشات، مسابقات، محتوى...)؟ <span class="text-red-600 font-bold">*</span>
+        </label>
+        <div class="space-y-3.5">
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="committeeJoin" value="نعم" required class="gf-radio">
+            <span>نعم</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="committeeJoin" value="لا" class="gf-radio">
+            <span>لا</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="committeeJoin" value="ربما لاحقاً" class="gf-radio">
+            <span>ربما لاحقاً</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- CARD 9: 💼 ما الإمكانيات أو المهارات التي يمكنك تقديمها للنادي؟ * (Radio Buttons / Options) -->
+      <div class="form-card bg-white dark:bg-[#242526] rounded-lg border border-gray-200 dark:border-[#3a3b3c] p-5 sm:p-6 mb-3 shadow-sm">
+        <label class="block text-base font-normal text-[#202124] dark:text-white mb-4">
+          💼 ما الإمكانيات أو المهارات التي يمكنك تقديمها للنادي؟ <span class="text-red-600 font-bold">*</span>
+        </label>
+        <div class="space-y-3.5">
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="offeredSkillsOption" value="🎤 تنظيم الأنشطة والفعاليات" required class="gf-radio">
+            <span>🎤 تنظيم الأنشطة والفعاليات</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="offeredSkillsOption" value="🎨 تصميم الملصقات والمنشورات" class="gf-radio">
+            <span>🎨 تصميم الملصقات والمنشورات</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="offeredSkillsOption" value="📱 إدارة صفحات التواصل الاجتماعي" class="gf-radio">
+            <span>📱 إدارة صفحات التواصل الاجتماعي</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="offeredSkillsOption" value="👨‍🏫 المساعدة في البرمجة أو التدريب" class="gf-radio">
+            <span>👨‍🏫 المساعدة في البرمجة أو التدريب</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="offeredSkillsOption" value="💡 اقتراح أفكار ومشاريع جديدة" class="gf-radio">
+            <span>💡 اقتراح أفكار ومشاريع جديدة</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="radio" name="offeredSkillsOption" value="⚙️ الدعم التقني أو التنظيمي" class="gf-radio">
+            <span>⚙️ الدعم التقني أو التنظيمي</span>
+          </label>
+          <div class="flex items-center gap-3 text-sm text-[#202124] dark:text-gray-200 pt-0.5">
+            <input type="radio" id="rb_skills_other" name="offeredSkillsOption" value="غيرها..." class="gf-radio">
+            <span class="cursor-pointer" onclick="document.getElementById('rb_skills_other').click()">غيرها...:</span>
+            <input type="text" id="q_skills_other_text" placeholder="حدد مهاراتك الأخرى" class="gf-input-underline flex-1 text-sm py-1 placeholder-gray-400" onfocus="document.getElementById('rb_skills_other').checked = true">
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 10: 🎓 ما المجالات التي ترغب في تعلمها ضمن الدورات الحضورية للنادي؟ * (Checkboxes) -->
+      <div class="form-card bg-white dark:bg-[#242526] rounded-lg border border-gray-200 dark:border-[#3a3b3c] p-5 sm:p-6 mb-6 shadow-sm">
+        <label class="block text-base font-normal text-[#202124] dark:text-white mb-4">
+          🎓 ما المجالات التي ترغب في تعلمها ضمن الدورات الحضورية للنادي؟ <span class="text-red-600 font-bold">*</span>
+        </label>
+        <div class="space-y-3.5" id="learning-topics-group">
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="learningTopics" value="💻 أساسيات البرمجة Python/C/C++" class="gf-checkbox">
+            <span>💻 أساسيات البرمجة Python/C/C++</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="learningTopics" value="🌐 تطوير الويب HTML/CSS/JS/React" class="gf-checkbox">
+            <span>🌐 تطوير الويب HTML/CSS/JS/React</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="learningTopics" value="🐺 الذكاء الاصطناعي وتعلم الآلة AI/ML" class="gf-checkbox">
+            <span>🐺 الذكاء الاصطناعي وتعلم الآلة AI/ML</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="learningTopics" value="📱 تطوير تطبيقات الموبايل Flutter/Android" class="gf-checkbox">
+            <span>📱 تطوير تطبيقات الموبايل Flutter/Android</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="learningTopics" value="🔐 الأمن السيبراني Cybersecurity" class="gf-checkbox">
+            <span>🔐 الأمن السيبراني Cybersecurity</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="learningTopics" value="📊 تحليل البيانات Data Science" class="gf-checkbox">
+            <span>📊 تحليل البيانات Data Science</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="learningTopics" value="🎨 التصميم الجرافيكي وUI/UX" class="gf-checkbox">
+            <span>🎨 التصميم الجرافيكي وUI/UX</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="learningTopics" value="🧠 التفكير الخوارزمي" class="gf-checkbox">
+            <span>🧠 التفكير الخوارزمي</span>
+          </label>
+          <label class="flex items-center gap-3 cursor-pointer group text-sm text-[#202124] dark:text-gray-200">
+            <input type="checkbox" name="learningTopics" value="💬 مهارات العرض والتقديم" class="gf-checkbox">
+            <span>💬 مهارات العرض والتقديم</span>
+          </label>
+          <div class="flex items-center gap-3 text-sm text-[#202124] dark:text-gray-200 pt-0.5">
+            <input type="checkbox" id="cb_learning_other" name="learningTopics" value="مجالات أخرى..." class="gf-checkbox" onchange="toggleOtherInput('cb_learning_other', 'q_learning_other_text')">
+            <span class="cursor-pointer" onclick="document.getElementById('cb_learning_other').click()">🚀 مجالات أخرى...:</span>
+            <input type="text" id="q_learning_other_text" placeholder="حدد مجالاً آخر" class="gf-input-underline flex-1 text-sm py-1 placeholder-gray-400">
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM ACTION BAR: SUBMIT & CLEAR BUTTONS -->
+      <div class="flex items-center justify-between mb-8">
+        <!-- Submit Button -->
+        <button type="submit" id="gf-submit-btn" class="bg-[#673ab7] hover:bg-[#5e35b1] active:bg-[#512da8] text-white text-sm font-medium px-6 py-2.5 rounded shadow hover:shadow-md transition-all flex items-center gap-2">
+          <span id="submit-text">إرسال</span>
+          <span id="submit-spinner" class="hidden">
+            <i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i>
+          </span>
+        </button>
+
+        <!-- Clear Form Button -->
+        <button type="button" onclick="clearForm()" class="text-[#673ab7] dark:text-[#b388ff] text-sm font-medium hover:bg-black/5 dark:hover:bg-white/10 px-4 py-2 rounded transition-colors">
+          محو النموذج
+        </button>
+      </div>
+
+      <!-- GOOGLE FORMS DISCLAIMER -->
+      <div class="text-center text-xs text-gray-500 dark:text-gray-400 space-y-1 mb-8">
+        <p>لا ترسل كلمات المرور أبداً عبر نماذج Google.</p>
+        <p class="text-[11px] text-gray-400 dark:text-gray-500">
+          لم يتم إنشاء هذا المحتوى أو اعتماده من قِبل Google. — 
+          <a href="javascript:void(0)" class="underline">الإبلاغ عن إساءة استخدام</a> — 
+          <a href="javascript:void(0)" class="underline">بنود الخدمة</a> — 
+          <a href="javascript:void(0)" class="underline">سياسة الخصوصية</a>
+        </p>
+        <p class="font-bold text-gray-400 dark:text-gray-500 pt-1 text-sm tracking-wide">Google Forms</p>
+      </div>
+
+    </form>
+
+    <!-- ============================================================ -->
+    <!-- SUCCESS CONFIRMATION CARD (Replaces Form upon Submission) -->
+    <!-- ============================================================ -->
+    <div id="submission-success-card" class="hidden">
+      <div class="bg-white dark:bg-[#242526] rounded-t-lg border-t-[10px] border-[#673ab7] dark:border-[#9c27b0] border-x border-b border-gray-200 dark:border-[#3a3b3c] p-6 sm:p-8 mb-4 shadow-sm">
+        <h2 class="text-2xl sm:text-3xl font-semibold text-[#202124] dark:text-white mb-2">
+          نادي البرمجة والذكاء الاصطناعي Coding AI
+        </h2>
+        <p class="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-5">
+          تم تسجيل ردك بنجاح. شكراً لانضمامك إلى مجتمعنا التقني!
+        </p>
+
+        <!-- Simple Contact Line in Success Card -->
+        <div class="py-3 px-4 rounded-lg bg-gray-50 dark:bg-[#1a1a1a] text-xs text-gray-600 dark:text-gray-300 mb-6 flex flex-wrap items-center justify-center gap-3">
+          <span class="font-medium text-gray-500 dark:text-gray-400">حسابات المالك والمطور للتواصل:</span>
+          <a href="https://t.me/Rami10_ab" target="_blank" rel="noopener noreferrer" class="text-[#0088cc] dark:text-[#38bdf8] hover:underline font-bold" dir="ltr">
+            المالك: @Rami10_ab
+          </a>
+          <span class="text-gray-300 dark:text-gray-600">•</span>
+          <a href="https://t.me/lKl_Y" target="_blank" rel="noopener noreferrer" class="text-[#673ab7] dark:text-[#b388ff] hover:underline font-bold" dir="ltr">
+            المطور: @lKl_Y
+          </a>
+        </div>
+
+        <a href="javascript:void(0)" onclick="resetFormToSubmitAnother()" class="text-[#1a73e8] dark:text-[#8ab4f8] text-sm hover:underline block mb-2 font-medium">
+          إرسال رد آخر
+        </a>
+      </div>
+      <div class="text-center text-xs text-gray-400 mb-8">
+        <p class="font-bold text-sm tracking-wide">Google Forms</p>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER: حسابات المالك والمطور للتواصل (بسيط ومباشر) -->
+    <!-- ============================================================ -->
+    <footer class="pt-6 pb-12 border-t border-gray-200 dark:border-gray-800 text-center text-xs sm:text-sm">
+      <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-4 text-gray-700 dark:text-gray-300 font-medium">
+        <span class="text-gray-500 dark:text-gray-400">حسابات المالك والمطور للتواصل:</span>
+        <a href="https://t.me/Rami10_ab" target="_blank" rel="noopener noreferrer" class="text-[#0088cc] dark:text-[#38bdf8] hover:underline font-bold" dir="ltr">
+          المالك: @Rami10_ab
+        </a>
+        <span class="text-gray-300 dark:text-gray-600 hidden sm:inline">•</span>
+        <a href="https://t.me/lKl_Y" target="_blank" rel="noopener noreferrer" class="text-[#673ab7] dark:text-[#b388ff] hover:underline font-bold" dir="ltr">
+          المطور: @lKl_Y
+        </a>
+      </div>
+      <p class="text-[11px] text-gray-400 dark:text-gray-500 mt-3">نادي البرمجة والذكاء الاصطناعي Coding AI — المدرسة العليا للأساتذة (ENS)</p>
+    </footer>
+
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- ADMIN AUTH MODAL & SECURE SHA-256 VERIFICATION -->
+  <!-- ============================================================ -->
+
+  <!-- Password Modal (كلمة المرور غير ظاهرة بتاتاً وآمنة تماماً) -->
+  <div id="admin-auth-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-xs hidden opacity-0 transition-opacity duration-200">
+    <div class="w-full max-w-sm bg-white dark:bg-[#242526] rounded-lg border border-gray-200 dark:border-gray-700 p-6 shadow-xl text-right">
+      <div class="flex items-center gap-2 mb-3 text-slate-800 dark:text-white">
+        <i data-lucide="lock" class="w-5 h-5 text-[#673ab7] dark:text-[#b388ff]"></i>
+        <h3 class="font-bold text-base">تسجيل دخول المشرف</h3>
+      </div>
+      <p class="text-xs text-gray-500 dark:text-gray-400 mb-4">أدخل كلمة المرور المصرحة للوصول إلى لوحة الإدارة</p>
+      
+      <form onsubmit="handleAdminLogin(event)">
+        <!-- Placeholder is completely neutral without displaying any passwords -->
+        <input type="password" id="admin-password-input" placeholder="أدخل كلمة المرور" required
+          class="gf-input-underline w-full text-sm py-2 mb-2 text-[#202124] dark:text-white tracking-widest">
+        <p id="admin-auth-error" class="text-xs text-red-500 mb-3 hidden">كلمة المرور غير صحيحة، يرجى المحاولة ثانية</p>
+
+        <div class="flex items-center justify-end gap-2 mt-4">
+          <button type="button" onclick="closeAdminAuthModal()" class="px-4 py-1.5 text-xs text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors">
+            إلغاء
+          </button>
+          <button type="submit" class="px-4 py-1.5 text-xs bg-[#673ab7] hover:bg-[#5e35b1] text-white font-medium rounded shadow transition-colors">
+            دخول
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard Modal -->
+  <div id="admin-dashboard-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs hidden opacity-0 transition-opacity duration-200 p-3 sm:p-6 overflow-y-auto">
+    <div class="max-w-6xl mx-auto bg-white dark:bg-[#1e1e1e] rounded-xl border border-gray-200 dark:border-gray-700 shadow-2xl overflow-hidden flex flex-col min-h-[85vh]">
+      
+      <!-- Dashboard Header -->
+      <div class="p-5 border-b border-gray-200 dark:border-gray-700 flex flex-col lg:flex-row lg:items-center justify-between gap-3 bg-gray-50 dark:bg-[#252525]">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-lg bg-[#673ab7] text-white flex items-center justify-center font-bold text-sm">
+            <i data-lucide="database" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <h2 class="text-base sm:text-lg font-bold text-gray-900 dark:text-white">جدول ردود استمارة Coding AI</h2>
+              <span id="db-status-badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300">
+                جارٍ التحقق من قاعدة البيانات...
+              </span>
+            </div>
+            <p class="text-xs text-gray-500 dark:text-gray-400">إدارة الردود وحفظها الدائم في قاعدة البيانات وتصديرها</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <!-- Add Sample Data -->
+          <button onclick="addDemoData()" class="px-2.5 py-1.5 rounded text-xs bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 text-gray-700 dark:text-gray-200 transition-colors flex items-center gap-1 font-medium">
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            <span>عينات</span>
+          </button>
+
+          <!-- Sync Google Sheet -->
+          <button onclick="syncWithGoogleSheet()" id="sync-sheet-btn" class="px-2.5 py-1.5 rounded text-xs bg-blue-50 dark:bg-blue-950/50 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 hover:bg-blue-100 transition-colors flex items-center gap-1 font-medium" title="سحب ومزامنة الردود مع Google Sheet">
+            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+            <span>مزامنة</span>
+          </button>
+
+          <!-- Sheet Config -->
+          <button onclick="openSheetConfigModal()" class="px-2.5 py-1.5 rounded text-xs bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-100 transition-colors flex items-center gap-1 font-medium">
+            <i data-lucide="sheet" class="w-3.5 h-3.5"></i>
+            <span>Google Sheet</span>
+          </button>
+
+          <!-- JSON Backup / Restore -->
+          <button onclick="exportBackupJSON()" class="px-2.5 py-1.5 rounded text-xs bg-amber-50 dark:bg-amber-950/50 border border-amber-200 dark:border-amber-800 text-amber-700 dark:text-amber-300 hover:bg-amber-100 transition-colors flex items-center gap-1 font-medium" title="تنزيل نسخة احتياطية كاملة">
+            <i data-lucide="hard-drive-download" class="w-3.5 h-3.5"></i>
+            <span>نسخ احتياطي</span>
+          </button>
+
+          <label class="px-2.5 py-1.5 rounded text-xs bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 text-gray-700 dark:text-gray-200 transition-colors flex items-center gap-1 font-medium cursor-pointer" title="استعادة من ملف JSON">
+            <i data-lucide="upload" class="w-3.5 h-3.5"></i>
+            <span>استعادة</span>
+            <input type="file" accept=".json" onchange="importBackupJSON(event)" class="hidden">
+          </label>
+
+          <!-- Export CSV -->
+          <button onclick="exportToCSV()" class="px-3 py-1.5 rounded text-xs bg-[#673ab7] hover:bg-[#5e35b1] text-white font-medium transition-colors flex items-center gap-1 shadow-sm">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <span>تصدير Excel</span>
+          </button>
+
+          <!-- Close Dashboard -->
+          <button onclick="closeAdminDashboard()" class="p-1.5 rounded text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Storage Mode Warning Banner (Shown only when running without SQLite & without Google Sheet) -->
+      <div id="storage-warning-banner" class="hidden px-4 py-2.5 bg-amber-50 dark:bg-amber-950/40 border-b border-amber-200 dark:border-amber-800 text-amber-800 dark:text-amber-200 text-xs flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <i data-lucide="alert-triangle" class="w-4 h-4 flex-shrink-0 text-amber-600"></i>
+          <span>
+            أنت حالياً على التخزين المؤقت للمتصفح فقط! لحفظ البيانات بشكل دائم لا يختفي بعد يوم، شغّل الموقع عبر ملف <strong>start.bat</strong> (أو <code>python server.py</code>) أو اربطه بـ <strong>Google Sheet</strong>.
+          </span>
+        </div>
+      </div>
+
+      <!-- Dashboard Stats Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 bg-gray-50/50 dark:bg-[#1a1a1a] border-b border-gray-200 dark:border-gray-800 text-xs">
+        <div class="p-3 bg-white dark:bg-[#252525] rounded-lg border border-gray-200 dark:border-gray-700">
+          <span class="text-gray-400 block text-[11px]">إجمالي الردود المستلمة</span>
+          <span class="text-xl font-bold text-[#673ab7] dark:text-[#b388ff]" id="stat-total">0</span>
+        </div>
+        <div class="p-3 bg-white dark:bg-[#252525] rounded-lg border border-gray-200 dark:border-gray-700">
+          <span class="text-gray-400 block text-[11px]">لديهم خبرة سابقة</span>
+          <span class="text-xl font-bold text-emerald-600 dark:text-emerald-400" id="stat-experienced">0</span>
+        </div>
+        <div class="p-3 bg-white dark:bg-[#252525] rounded-lg border border-gray-200 dark:border-gray-700">
+          <span class="text-gray-400 block text-[11px]">راغبون في التنظيم</span>
+          <span class="text-xl font-bold text-blue-600 dark:text-blue-400" id="stat-committees">0</span>
+        </div>
+        <div class="p-3 bg-white dark:bg-[#252525] rounded-lg border border-gray-200 dark:border-gray-700">
+          <span class="text-gray-400 block text-[11px]">اهتمام بالذكاء الاصطناعي</span>
+          <span class="text-xl font-bold text-purple-600 dark:text-purple-400" id="stat-ai-fans">0</span>
+        </div>
+      </div>
+
+      <!-- Search & Filters Toolbar -->
+      <div class="p-4 flex flex-col sm:flex-row items-center justify-between gap-3 border-b border-gray-200 dark:border-gray-800">
+        <div class="relative w-full sm:w-80">
+          <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute right-3 top-2.5"></i>
+          <input type="text" id="admin-search" oninput="filterAdminTable()" placeholder="بحث بالاسم أو يوزر تلغرام أو التخصص..."
+            class="gf-input-underline w-full pr-9 pl-3 py-1.5 text-xs text-gray-800 dark:text-white">
+        </div>
+
+        <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+          <select id="filter-year" onchange="filterAdminTable()" class="px-2.5 py-1.5 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#252525] text-xs text-gray-700 dark:text-gray-200 outline-none">
+            <option value="ALL">كل السنوات</option>
+            <option value="سنة أولى">سنة أولى</option>
+            <option value="سنة ثانية">سنة ثانية</option>
+            <option value="سنة ثالثة">سنة ثالثة</option>
+            <option value="سنة رابعة">سنة رابعة</option>
+            <option value="سنة خامسة">سنة خامسة</option>
+            <option value="ماستر">ماستر</option>
+          </select>
+
+          <select id="filter-experience" onchange="filterAdminTable()" class="px-2.5 py-1.5 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#252525] text-xs text-gray-700 dark:text-gray-200 outline-none">
+            <option value="ALL">الخبرة: الكل</option>
+            <option value="نعم">نعم (لديه خبرة)</option>
+            <option value="لا">لا (بدون خبرة)</option>
+          </select>
+
+          <button onclick="clearAllDataConfirm()" title="مسح كافة الردود المحلية" class="p-1.5 rounded text-red-500 hover:bg-red-50 dark:hover:bg-red-950/40">
+            <i data-lucide="trash-2" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Responses Table -->
+      <div class="flex-1 overflow-x-auto p-4">
+        <table class="w-full text-right text-xs border-collapse">
+          <thead>
+            <tr class="border-b border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 bg-gray-50/60 dark:bg-[#252525]">
+              <th class="py-2.5 px-3">#</th>
+              <th class="py-2.5 px-3">الاسم الكامل</th>
+              <th class="py-2.5 px-3">القسم / التخصص</th>
+              <th class="py-2.5 px-3">السنة</th>
+              <th class="py-2.5 px-3">يوزر تلغرام</th>
+              <th class="py-2.5 px-3">خبرة سابقة</th>
+              <th class="py-2.5 px-3">المجالات المهتم بها</th>
+              <th class="py-2.5 px-3">لجان التنظيم</th>
+              <th class="py-2.5 px-3 text-center">الإجراءات</th>
+            </tr>
+          </thead>
+          <tbody id="admin-table-body" class="divide-y divide-gray-100 dark:divide-gray-800 text-gray-800 dark:text-gray-200">
+            <!-- Populated via JavaScript -->
+          </tbody>
+        </table>
+
+        <!-- Empty Table State -->
+        <div id="table-empty-state" class="py-12 text-center text-gray-400 hidden">
+          <p class="text-sm">لا توجد ردود مسجلة بعد في الذاكرة المحلية.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Response Details Modal -->
+  <div id="response-detail-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs hidden opacity-0 transition-opacity duration-200">
+    <div class="w-full max-w-xl bg-white dark:bg-[#242526] rounded-xl border border-gray-200 dark:border-gray-700 p-6 shadow-2xl max-h-[90vh] overflow-y-auto text-xs sm:text-sm text-right">
+      <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-gray-700 mb-4">
+        <div>
+          <h3 id="det-name" class="font-bold text-base text-gray-900 dark:text-white"></h3>
+          <p id="det-time" class="text-xs text-gray-400"></p>
+        </div>
+        <button onclick="closeResponseDetailModal()" class="p-1 rounded text-gray-400 hover:text-gray-600">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3.5">
+        <div class="grid grid-cols-2 gap-3 bg-gray-50 dark:bg-[#1a1a1a] p-3.5 rounded-lg border border-gray-100 dark:border-gray-800">
+          <div>
+            <span class="text-gray-400 block text-[11px]">القسم / التخصص:</span>
+            <span id="det-major" class="font-medium text-gray-800 dark:text-gray-200"></span>
+          </div>
+          <div>
+            <span class="text-gray-400 block text-[11px]">السنة الدراسية:</span>
+            <span id="det-year" class="font-medium text-gray-800 dark:text-gray-200"></span>
+          </div>
+          <div class="col-span-2">
+            <span class="text-gray-400 block text-[11px]">يوزر تلغرام:</span>
+            <a id="det-telegram-link" href="#" target="_blank" rel="noopener noreferrer" class="font-mono text-[#673ab7] dark:text-[#b388ff] font-bold hover:underline inline-flex items-center gap-1.5" dir="ltr">
+              <span id="det-telegram"></span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="p-3.5 bg-gray-50 dark:bg-[#1a1a1a] rounded-lg border border-gray-100 dark:border-gray-800 space-y-2">
+          <div>
+            <span class="text-gray-400 block text-[11px]">هل لديه خبرة سابقة في البرمجة؟</span>
+            <span id="det-exp" class="font-semibold text-gray-800 dark:text-gray-200"></span>
+          </div>
+          <div>
+            <span class="text-gray-400 block text-[11px]">اللغات أو التقنيات التي يعرفها:</span>
+            <span id="det-tech" class="text-gray-700 dark:text-gray-300"></span>
+          </div>
+          <div>
+            <span class="text-gray-400 block text-[11px]">المجالات التي تثير اهتمامه:</span>
+            <span id="det-domains" class="text-gray-700 dark:text-gray-300"></span>
+          </div>
+          <div>
+            <span class="text-gray-400 block text-[11px]">المشاركة في لجان تنظيم الأنشطة:</span>
+            <span id="det-committee" class="font-medium text-gray-800 dark:text-gray-200"></span>
+          </div>
+          <div>
+            <span class="text-gray-400 block text-[11px]">الإمكانيات أو المهارات المقدمة:</span>
+            <span id="det-skills" class="text-gray-700 dark:text-gray-300"></span>
+          </div>
+          <div>
+            <span class="text-gray-400 block text-[11px]">المجالات المرغوب تعلمها حضورياً:</span>
+            <span id="det-learning" class="text-gray-700 dark:text-gray-300"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-5 flex justify-end">
+        <button onclick="closeResponseDetailModal()" class="px-4 py-1.5 text-xs bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded font-medium">
+          إغلاق
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Sheet Configuration Modal -->
+  <div id="sheet-config-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs hidden opacity-0 transition-opacity duration-200">
+    <div class="w-full max-w-md bg-white dark:bg-[#242526] rounded-xl border border-gray-200 dark:border-gray-700 p-6 shadow-2xl text-right text-xs sm:text-sm">
+      <div class="flex items-center justify-between pb-3 border-b border-gray-200 dark:border-gray-700 mb-3">
+        <h3 class="font-bold text-gray-900 dark:text-white flex items-center gap-2">
+          <i data-lucide="sheet" class="w-4 h-4 text-emerald-600"></i>
+          <span>ربط Google Sheets الفوري</span>
+        </h3>
+        <button onclick="closeSheetConfigModal()" class="text-gray-400 hover:text-gray-600">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <p class="text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
+        الصق رابط Google Apps Script Web App الذي أنشأته لنقل كافة الردود مباشرة إلى جدول جوجل درايف:
+      </p>
+
+      <input type="url" id="sheet-url-input" placeholder="https://script.google.com/macros/s/AKfycb.../exec" dir="ltr"
+        class="gf-input-underline w-full py-1.5 mb-4 text-xs">
+
+      <div class="flex items-center justify-end gap-2">
+        <button onclick="closeSheetConfigModal()" class="px-3.5 py-1.5 text-xs text-gray-600 dark:text-gray-300 hover:bg-gray-100 rounded">
+          إلغاء
+        </button>
+        <button onclick="saveSheetUrl()" class="px-4 py-1.5 text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-medium rounded shadow">
+          حفظ وتفعيل
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- JAVASCRIPT LOGIC & GOOGLE FORMS FUNCTIONALITY -->
+  <!-- ============================================================ -->
+  <script>
+    // ==========================================
+    // 1. THEME TOGGLE (DARK / LIGHT MODE)
+    // ==========================================
+    const darkIcon = document.getElementById('theme-toggle-dark-icon');
+    const lightIcon = document.getElementById('theme-toggle-light-icon');
+
+    function initTheme() {
+      const savedTheme = localStorage.getItem('gf_coding_ai_theme');
+      if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        darkIcon.classList.remove('hidden');
+        lightIcon.classList.add('hidden');
+      } else {
+        document.documentElement.classList.remove('dark');
+        lightIcon.classList.remove('hidden');
+        darkIcon.classList.add('hidden');
+      }
+    }
+
+    function toggleTheme() {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('gf_coding_ai_theme', 'light');
+        lightIcon.classList.remove('hidden');
+        darkIcon.classList.add('hidden');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('gf_coding_ai_theme', 'dark');
+        darkIcon.classList.remove('hidden');
+        lightIcon.classList.add('hidden');
+      }
+    }
+
+    initTheme();
+
+    // ==========================================
+    // 2. GOOGLE FIRST-TIME ACCOUNT SELECTION LOGIC
+    // ==========================================
+    const GOOGLE_ACCOUNT_KEY = 'gf_user_google_account_v1';
+
+    function initGoogleAccount() {
+      const savedAccount = localStorage.getItem(GOOGLE_ACCOUNT_KEY);
+      if (!savedAccount) {
+        // First time opening the link! Show Google account modal
+        const modal = document.getElementById('google-first-time-modal');
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+          modal.classList.remove('opacity-0');
+          document.getElementById('google-first-time-email').focus();
+        }, 100);
+      } else {
+        document.getElementById('current-signed-email').textContent = savedAccount;
+      }
+    }
+
+    function handleGoogleFirstTimeSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('google-first-time-email').value.trim();
+      if (email) {
+        localStorage.setItem(GOOGLE_ACCOUNT_KEY, email);
+        document.getElementById('current-signed-email').textContent = email;
+        const modal = document.getElementById('google-first-time-modal');
+        modal.classList.add('opacity-0');
+        setTimeout(() => modal.classList.add('hidden'), 300);
+      }
+    }
+
+    function promptSwitchAccount() {
+      const current = localStorage.getItem(GOOGLE_ACCOUNT_KEY) || '';
+      const newAcc = prompt('أدخل حساب Google الجديد للمتابعة في النموذج:', current);
+      if (newAcc && newAcc.trim() !== '') {
+        localStorage.setItem(GOOGLE_ACCOUNT_KEY, newAcc.trim());
+        document.getElementById('current-signed-email').textContent = newAcc.trim();
+      }
+    }
+
+    initGoogleAccount();
+
+    // ==========================================
+    // 3. ACTIVE CARD HIGHLIGHTING (GOOGLE FORMS BEHAVIOR)
+    // ==========================================
+    document.querySelectorAll('.form-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.form-card').forEach(c => c.classList.remove('active-card'));
+        card.classList.add('active-card');
+      });
+    });
+
+    function toggleOtherInput(checkboxId, inputId) {
+      const cb = document.getElementById(checkboxId);
+      const input = document.getElementById(inputId);
+      if (cb.checked) {
+        input.focus();
+      } else {
+        input.value = '';
+      }
+    }
+
+    // ==========================================
+    // 4. PERMANENT STORAGE ENGINE (SQLite + IndexedDB + Google Sheets)
+    // ==========================================
+    // إذا رفعت الموقع على استضافة مجانية (GitHub Pages / Netlify) بدون server.py،
+    // الصق رابط Google Apps Script Web App هنا ليكون متاحاً لجميع الطلبة:
+    const DEFAULT_GOOGLE_SHEET_URL = '';
+
+    const STORAGE_KEY = 'gf_coding_ai_responses_v3';
+    const LEGACY_STORAGE_KEYS = ['coding_ai_registrations_v1', 'gf_coding_ai_responses_v2'];
+    const SHEET_URL_KEY = 'gf_coding_ai_sheet_url_v3';
+    const IDB_NAME = 'CodingAI_PermanentDB';
+    const IDB_STORE = 'responses';
+
+    let apiBaseUrl = null;       // null = وضع المتصفح/السحابة، '' أو 'http://localhost:3000' = متصل بـ SQLite
+    let adminSessionToken = sessionStorage.getItem('gf_admin_token') || '';
+    let currentResponses = [];   // البيانات المعروضة في لوحة الإدارة
+
+    // فتح قاعدة بيانات IndexedDB في المتصفح (أكثر ثباتاً من localStorage)
+    function openIndexedDB() {
+      return new Promise((resolve, reject) => {
+        if (!window.indexedDB) {
+          return reject(new Error('IndexedDB not supported'));
+        }
+        const req = indexedDB.open(IDB_NAME, 1);
+        req.onupgradeneeded = (ev) => {
+          const db = ev.target.result;
+          if (!db.objectStoreNames.contains(IDB_STORE)) {
+            db.createObjectStore(IDB_STORE, { keyPath: 'id' });
+          }
+        };
+        req.onsuccess = (ev) => resolve(ev.target.result);
+        req.onerror = (ev) => reject(ev.target.error);
+      });
+    }
+
+    async function getIDBResponses() {
+      try {
+        const db = await openIndexedDB();
+        return await new Promise((resolve, reject) => {
+          const tx = db.transaction(IDB_STORE, 'readonly');
+          const store = tx.objectStore(IDB_STORE);
+          const req = store.getAll();
+          req.onsuccess = () => resolve(req.result || []);
+          req.onerror = () => reject(req.error);
+        });
+      } catch (e) {
+        return [];
+      }
+    }
+
+    async function saveIDBResponses(list) {
+      try {
+        const db = await openIndexedDB();
+        return await new Promise((resolve, reject) => {
+          const tx = db.transaction(IDB_STORE, 'readwrite');
+          const store = tx.objectStore(IDB_STORE);
+          store.clear();
+          list.forEach(item => {
+            if (item && item.id) store.put(item);
+          });
+          tx.oncomplete = () => resolve(true);
+          tx.onerror = () => reject(tx.error);
+        });
+      } catch (e) {
+        return false;
+      }
+    }
+
+    function normalizeRecord(raw) {
+      if (!raw || typeof raw !== 'object') return null;
+      return {
+        id: String(raw.id || ('GF-' + Date.now().toString(36).toUpperCase())),
+        timestamp: raw.timestamp || new Date().toLocaleString('ar-DZ', { dateStyle: 'short', timeStyle: 'short' }),
+        account: raw.account || '',
+        fullName: raw.fullName || '',
+        major: raw.major || '',
+        academicYear: raw.academicYear || '',
+        telegramUser: raw.telegramUser || raw.phone || raw.email || '—',
+        hasExperience: raw.hasExperience || raw.experienceLevel || '—',
+        knownTech: raw.knownTech || (Array.isArray(raw.technologies) ? raw.technologies.join(', ') : '—'),
+        interestDomains: Array.isArray(raw.interestDomains)
+          ? raw.interestDomains
+          : (Array.isArray(raw.preferredFields) ? raw.preferredFields : []),
+        committeeJoin: raw.committeeJoin || raw.committeeInterest || '—',
+        offeredSkills: raw.offeredSkills || '—',
+        learningTopics: Array.isArray(raw.learningTopics)
+          ? raw.learningTopics
+          : (raw.learningGoals ? [raw.learningGoals] : [])
+      };
+    }
+
+    function mergeUniqueLists(...lists) {
+      const map = new Map();
+      lists.flat().forEach(item => {
+        const norm = normalizeRecord(item);
+        if (norm && norm.fullName) {
+          if (!map.has(norm.id)) {
+            map.set(norm.id, norm);
+          }
+        }
+      });
+      return Array.from(map.values());
+    }
+
+    function getLocalStorageList(key) {
+      try {
+        const raw = localStorage.getItem(key);
+        return raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    async function getBrowserResponses() {
+      const idbList = await getIDBResponses();
+      const v3 = getLocalStorageList(STORAGE_KEY);
+      const legacy = LEGACY_STORAGE_KEYS.flatMap(k => getLocalStorageList(k));
+      const merged = mergeUniqueLists(v3, idbList, legacy);
+      // حفظ النسخة الموحدة في IndexedDB و localStorage وتنظيف المفاتيح القديمة بعد ترحيلها
+      if (merged.length > 0) {
+        saveLocalResponsesCache(merged);
+        await saveIDBResponses(merged);
+      }
+      if (legacy.length > 0) {
+        LEGACY_STORAGE_KEYS.forEach(k => localStorage.removeItem(k));
+      }
+      return merged;
+    }
+
+    function saveLocalResponsesCache(data) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (e) {
+        console.warn('localStorage write skipped:', e);
+      }
+    }
+
+    function getSheetUrl() {
+      return localStorage.getItem(SHEET_URL_KEY) || DEFAULT_GOOGLE_SHEET_URL || '';
+    }
+
+    async function fetchWithTimeout(url, options = {}, timeoutMs = 1500) {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        return await fetch(url, { ...options, signal: controller.signal });
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    async function detectBackend() {
+      const candidates = window.location.protocol.startsWith('http')
+        ? ['', 'http://localhost:3000']
+        : ['http://localhost:3000'];
+
+      for (const base of candidates) {
+        try {
+          const res = await fetchWithTimeout(`${base}/api/health`, { method: 'GET' }, 1200);
+          if (res.ok) {
+            const info = await res.json();
+            if (info && info.ok) {
+              apiBaseUrl = base;
+              if (info.sheetUrl && !localStorage.getItem(SHEET_URL_KEY)) {
+                localStorage.setItem(SHEET_URL_KEY, info.sheetUrl);
+              }
+              return info;
+            }
+          }
+        } catch (e) {
+          // الخادم المحلي غير متاح على هذا المسار، ننتقل للتالي
+        }
+      }
+      apiBaseUrl = null;
+      return null;
+    }
+
+    // فحص الخادم المحلي عند تحميل الصفحة لجلب إعدادات Google Sheet المشتركة
+    detectBackend();
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+
+      const form = document.getElementById('google-forms-app');
+      const submitBtn = document.getElementById('gf-submit-btn');
+      const submitText = document.getElementById('submit-text');
+      const submitSpinner = document.getElementById('submit-spinner');
+
+      // Card 7: Check at least one interest domain
+      const interestCheckboxes = form.querySelectorAll('input[name="interestDomains"]:checked');
+      if (interestCheckboxes.length === 0) {
+        alert('يرجى تحديد مجال واحد على الأقل في سؤال: "ما المجالات التي تثير اهتمامك أكثر؟"');
+        const card7 = document.getElementById('interest-domains-group').closest('.form-card');
+        card7.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card7.classList.add('active-card');
+        return;
+      }
+
+      // Card 10: Check at least one learning topic
+      const learningCheckboxes = form.querySelectorAll('input[name="learningTopics"]:checked');
+      if (learningCheckboxes.length === 0) {
+        alert('يرجى تحديد مجال واحد على الأقل في سؤال: "ما المجالات التي ترغب في تعلمها ضمن الدورات الحضورية للنادي؟"');
+        const card10 = document.getElementById('learning-topics-group').closest('.form-card');
+        card10.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card10.classList.add('active-card');
+        return;
+      }
+
+      // Collect data
+      const formData = new FormData(form);
+      const fullName = formData.get('fullName')?.trim();
+      const major = formData.get('major')?.trim();
+      const academicYear = formData.get('academicYear');
+      let telegramUser = formData.get('telegramUser')?.trim();
+      if (telegramUser && !telegramUser.startsWith('@')) {
+        telegramUser = '@' + telegramUser;
+      }
+
+      const hasExperience = formData.get('hasExperience');
+      const knownTech = formData.get('knownTech')?.trim() || '—';
+      const committeeJoin = formData.get('committeeJoin');
+
+      // Handle Interest Domains
+      const interestDomains = [];
+      interestCheckboxes.forEach(cb => {
+        if (cb.value === 'أخرى') {
+          const otherVal = document.getElementById('q_domain_other_text').value.trim();
+          interestDomains.push(otherVal ? `أخرى: ${otherVal}` : 'أخرى');
+        } else {
+          interestDomains.push(cb.value);
+        }
+      });
+
+      // Handle Offered Skills
+      let offeredSkills = formData.get('offeredSkillsOption');
+      if (offeredSkills === 'غيرها...') {
+        const otherSkillVal = document.getElementById('q_skills_other_text').value.trim();
+        offeredSkills = otherSkillVal ? `غيرها: ${otherSkillVal}` : 'غيرها...';
+      }
+
+      // Handle Learning Topics
+      const learningTopics = [];
+      learningCheckboxes.forEach(cb => {
+        if (cb.value === 'مجالات أخرى...') {
+          const otherLearnVal = document.getElementById('q_learning_other_text').value.trim();
+          learningTopics.push(otherLearnVal ? `أخرى: ${otherLearnVal}` : 'مجالات أخرى...');
+        } else {
+          learningTopics.push(cb.value);
+        }
+      });
+
+      // UI Loading state
+      submitBtn.disabled = true;
+      submitText.textContent = 'جارٍ الإرسال...';
+      submitSpinner.classList.remove('hidden');
+
+      const responseRecord = {
+        id: 'GF-' + Date.now().toString(36).toUpperCase(),
+        timestamp: new Date().toLocaleString('ar-DZ', { dateStyle: 'short', timeStyle: 'short' }),
+        account: localStorage.getItem(GOOGLE_ACCOUNT_KEY) || 'مجهول',
+        fullName,
+        major,
+        academicYear,
+        telegramUser,
+        hasExperience,
+        knownTech,
+        interestDomains,
+        committeeJoin,
+        offeredSkills,
+        learningTopics
+      };
+
+      // 1. Save to IndexedDB & localStorage
+      const browserList = await getBrowserResponses();
+      const updatedList = [responseRecord, ...browserList.filter(i => i.id !== responseRecord.id)];
+      saveLocalResponsesCache(updatedList);
+      await saveIDBResponses(updatedList);
+
+      // 2. Save permanently to SQLite server if running (otherwise queue for later sync)
+      let savedToSqlite = false;
+      if (apiBaseUrl === null) {
+        await detectBackend();
+      }
+      if (apiBaseUrl !== null) {
+        try {
+          const saveRes = await fetch(`${apiBaseUrl}/api/responses`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(responseRecord)
+          });
+          if (saveRes.ok) savedToSqlite = true;
+        } catch (err) {
+          console.warn('SQLite server save warning:', err);
+        }
+      }
+      if (!savedToSqlite) {
+        const q = getLocalStorageList('gf_unsynced_queue');
+        q.unshift(responseRecord);
+        localStorage.setItem('gf_unsynced_queue', JSON.stringify(q));
+      }
+
+      // 3. Dispatch to Google Sheets if URL configured
+      const sheetUrl = getSheetUrl();
+      if (sheetUrl && sheetUrl.startsWith('http')) {
+        try {
+          await fetch(sheetUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(responseRecord)
+          });
+        } catch (err) {
+          console.warn('Google Sheet submission warning:', err);
+        }
+      }
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitText.textContent = 'إرسال';
+        submitSpinner.classList.add('hidden');
+
+        // Confetti celebration
+        if (typeof confetti === 'function') {
+          confetti({
+            particleCount: 50,
+            spread: 60,
+            origin: { y: 0.6 },
+            colors: ['#673ab7', '#b388ff', '#2196f3', '#00e676']
+          });
+        }
+
+        // Show confirmation card
+        form.classList.add('hidden');
+        document.getElementById('submission-success-card').classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 400);
+    }
+
+    function resetFormToSubmitAnother() {
+      document.getElementById('google-forms-app').reset();
+      document.getElementById('submission-success-card').classList.add('hidden');
+      document.getElementById('google-forms-app').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function clearForm() {
+      if (confirm('هل تريد محو هذا النموذج وإلغاء جميع الإجابات التي أدخلتها؟')) {
+        document.getElementById('google-forms-app').reset();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    // ==========================================
+    // 5. SECURE ADMIN AUTH (SQLite Session + SHA-256 HASH CHECK)
+    // ==========================================
+    const ADMIN_PASS_HASH = 'b24adf0413cc0e4a1109b8af3363f3abe50940b8c7f15867621ea658e5325534';
+
+    async function hashString(str) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(str);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function openAdminAuthModal() {
+      document.getElementById('admin-password-input').value = '';
+      document.getElementById('admin-auth-error').classList.add('hidden');
+      const modal = document.getElementById('admin-auth-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        document.getElementById('admin-password-input').focus();
+      }, 10);
+    }
+
+    function closeAdminAuthModal() {
+      const modal = document.getElementById('admin-auth-modal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 200);
+    }
+
+    async function handleAdminLogin(e) {
+      e.preventDefault();
+      const entered = document.getElementById('admin-password-input').value;
+
+      await detectBackend();
+
+      if (apiBaseUrl !== null) {
+        try {
+          const res = await fetch(`${apiBaseUrl}/api/admin/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password: entered })
+          });
+          const data = await res.json();
+          if (res.ok && data.ok && data.token) {
+            adminSessionToken = data.token;
+            sessionStorage.setItem('gf_admin_token', adminSessionToken);
+            closeAdminAuthModal();
+            openAdminDashboard();
+            return;
+          } else {
+            document.getElementById('admin-auth-error').classList.remove('hidden');
+            return;
+          }
+        } catch (err) {
+          console.warn('Server login failed, falling back to local hash:', err);
+        }
+      }
+
+      const enteredHash = await hashString(entered);
+      if (enteredHash === ADMIN_PASS_HASH) {
+        closeAdminAuthModal();
+        openAdminDashboard();
+      } else {
+        document.getElementById('admin-auth-error').classList.remove('hidden');
+      }
+    }
+
+    async function openAdminDashboard() {
+      const modal = document.getElementById('admin-dashboard-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 10);
+      await renderAdminDashboard();
+    }
+
+    function closeAdminDashboard() {
+      const modal = document.getElementById('admin-dashboard-modal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 200);
+    }
+
+    function updateStorageStatusUI(isSqliteConnected, hasSheet) {
+      const badge = document.getElementById('db-status-badge');
+      const warnBanner = document.getElementById('storage-warning-banner');
+      if (isSqliteConnected) {
+        badge.className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300';
+        badge.textContent = '● متصل بقاعدة بيانات SQLite دائمة';
+        warnBanner.classList.add('hidden');
+      } else if (hasSheet) {
+        badge.className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800 dark:bg-blue-950 dark:text-blue-300';
+        badge.textContent = '● متصل بسحابة Google Sheets';
+        warnBanner.classList.add('hidden');
+      } else {
+        badge.className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300';
+        badge.textContent = '● تخزين متصفح مؤقت';
+        warnBanner.classList.remove('hidden');
+      }
+    }
+
+    async function loadAuthoritativeResponses() {
+      const browserList = await getBrowserResponses();
+      const health = await detectBackend();
+
+      let finalList = browserList;
+      let isSqliteConnected = false;
+
+      if (apiBaseUrl !== null && adminSessionToken) {
+        try {
+          // 1. ترحيل أي ردود معلّقة (أو بيانات قديمة قبل إنشاء SQLite لأول مرة)
+          const unsyncedQueue = getLocalStorageList('gf_unsynced_queue');
+          const firstTimeMigrate = localStorage.getItem('gf_migrated_to_sqlite') !== '1' && health && health.totalResponses === 0;
+          const toPush = firstTimeMigrate ? mergeUniqueLists(unsyncedQueue, browserList) : unsyncedQueue;
+
+          if (toPush.length > 0) {
+            const syncRes = await fetch(`${apiBaseUrl}/api/sync-import`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${adminSessionToken}`
+              },
+              body: JSON.stringify({ responses: toPush })
+            });
+            if (syncRes.ok) {
+              localStorage.removeItem('gf_unsynced_queue');
+            }
+          }
+          localStorage.setItem('gf_migrated_to_sqlite', '1');
+
+          // 2. جلب القائمة الكاملة والمعتمدة من SQLite
+          const res = await fetch(`${apiBaseUrl}/api/responses`, {
+            headers: { 'Authorization': `Bearer ${adminSessionToken}` }
+          });
+
+          if (res.status === 401) {
+            adminSessionToken = '';
+            sessionStorage.removeItem('gf_admin_token');
+          } else if (res.ok) {
+            const payload = await res.json();
+            if (payload.ok && Array.isArray(payload.responses)) {
+              isSqliteConnected = true;
+              finalList = payload.responses;
+              saveLocalResponsesCache(finalList);
+              await saveIDBResponses(finalList);
+            }
+          }
+        } catch (err) {
+          console.warn('Error loading from SQLite:', err);
+        }
+      }
+
+      const sheetUrl = getSheetUrl();
+      updateStorageStatusUI(isSqliteConnected, Boolean(sheetUrl && sheetUrl.startsWith('http')));
+      currentResponses = finalList;
+      return finalList;
+    }
+
+    async function renderAdminDashboard() {
+      const list = await loadAuthoritativeResponses();
+      
+      // Update quick metrics
+      document.getElementById('stat-total').textContent = list.length;
+      document.getElementById('stat-experienced').textContent = list.filter(i => i.hasExperience === 'نعم').length;
+      document.getElementById('stat-committees').textContent = list.filter(i => i.committeeJoin === 'نعم').length;
+      document.getElementById('stat-ai-fans').textContent = list.filter(i => 
+        Array.isArray(i.interestDomains) && i.interestDomains.some(d => d.includes('الذكاء الاصطناعي'))
+      ).length;
+
+      filterAdminTable();
+    }
+
+    function filterAdminTable() {
+      const list = currentResponses;
+      const searchQuery = (document.getElementById('admin-search').value || '').toLowerCase().trim();
+      const yearFilter = document.getElementById('filter-year').value;
+      const expFilter = document.getElementById('filter-experience').value;
+
+      const filtered = list.filter(item => {
+        const matchSearch = !searchQuery || 
+          (item.fullName && item.fullName.toLowerCase().includes(searchQuery)) ||
+          (item.telegramUser && item.telegramUser.toLowerCase().includes(searchQuery)) ||
+          (item.major && item.major.toLowerCase().includes(searchQuery));
+
+        const matchYear = (yearFilter === 'ALL') || (item.academicYear === yearFilter);
+        const matchExp = (expFilter === 'ALL') || (item.hasExperience === expFilter);
+
+        return matchSearch && matchYear && matchExp;
+      });
+
+      const tbody = document.getElementById('admin-table-body');
+      const emptyState = document.getElementById('table-empty-state');
+      tbody.innerHTML = '';
+
+      if (filtered.length === 0) {
+        emptyState.classList.remove('hidden');
+      } else {
+        emptyState.classList.add('hidden');
+        filtered.forEach((item, idx) => {
+          const tr = document.createElement('tr');
+          tr.className = 'hover:bg-gray-50 dark:hover:bg-[#2a2a2a] transition-colors';
+
+          const expColor = item.hasExperience === 'نعم' 
+            ? 'text-emerald-700 bg-emerald-50 dark:bg-emerald-950 dark:text-emerald-300' 
+            : 'text-gray-600 bg-gray-100 dark:bg-gray-800 dark:text-gray-300';
+
+          const domainsPreview = Array.isArray(item.interestDomains) 
+            ? item.interestDomains.slice(0, 2).join('، ') + (item.interestDomains.length > 2 ? '...' : '') 
+            : (item.interestDomains || '—');
+
+          const cleanTg = (item.telegramUser || '').replace('@', '');
+
+          tr.innerHTML = `
+            <td class="py-2.5 px-3 font-mono text-gray-400">${idx + 1}</td>
+            <td class="py-2.5 px-3 font-semibold text-gray-900 dark:text-white">${escapeHtml(item.fullName)}</td>
+            <td class="py-2.5 px-3 text-gray-600 dark:text-gray-300">${escapeHtml(item.major)}</td>
+            <td class="py-2.5 px-3 text-gray-600 dark:text-gray-300">${escapeHtml(item.academicYear)}</td>
+            <td class="py-2.5 px-3 font-mono text-xs" dir="ltr">
+              <a href="https://t.me/${escapeHtml(cleanTg)}" target="_blank" class="text-[#673ab7] dark:text-[#b388ff] hover:underline font-bold">
+                ${escapeHtml(item.telegramUser || '—')}
+              </a>
+            </td>
+            <td class="py-2.5 px-3">
+              <span class="inline-block px-2 py-0.5 rounded text-[11px] font-bold ${expColor}">
+                ${escapeHtml(item.hasExperience)}
+              </span>
+            </td>
+            <td class="py-2.5 px-3 text-gray-600 dark:text-gray-300 truncate max-w-[150px]">${escapeHtml(domainsPreview)}</td>
+            <td class="py-2.5 px-3 text-gray-600 dark:text-gray-300">${escapeHtml(item.committeeJoin)}</td>
+            <td class="py-2.5 px-3 text-center">
+              <div class="flex items-center justify-center gap-1">
+                <button onclick="viewResponseDetail('${item.id}')" title="عرض التفاصيل" class="p-1 rounded text-[#673ab7] hover:bg-purple-50 dark:hover:bg-purple-950">
+                  <i data-lucide="eye" class="w-4 h-4"></i>
+                </button>
+                <button onclick="deleteResponse('${item.id}')" title="حذف" class="p-1 rounded text-red-500 hover:bg-red-50 dark:hover:bg-red-950">
+                  <i data-lucide="trash" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function viewResponseDetail(id) {
+      const r = currentResponses.find(item => item.id === id);
+      if (!r) return;
+
+      document.getElementById('det-name').textContent = r.fullName || '—';
+      document.getElementById('det-time').textContent = 'تاريخ الرد: ' + (r.timestamp || '—');
+      document.getElementById('det-major').textContent = r.major || '—';
+      document.getElementById('det-year').textContent = r.academicYear || '—';
+      
+      const cleanTg = (r.telegramUser || '').replace('@', '');
+      document.getElementById('det-telegram').textContent = r.telegramUser || '—';
+      document.getElementById('det-telegram-link').href = `https://t.me/${cleanTg}`;
+
+      document.getElementById('det-exp').textContent = r.hasExperience || '—';
+      document.getElementById('det-tech').textContent = r.knownTech || '—';
+      document.getElementById('det-domains').textContent = Array.isArray(r.interestDomains) ? r.interestDomains.join(' | ') : r.interestDomains;
+      document.getElementById('det-committee').textContent = r.committeeJoin || '—';
+      document.getElementById('det-skills').textContent = r.offeredSkills || '—';
+      document.getElementById('det-learning').textContent = Array.isArray(r.learningTopics) ? r.learningTopics.join(' | ') : r.learningTopics;
+
+      const modal = document.getElementById('response-detail-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 10);
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function closeResponseDetailModal() {
+      const modal = document.getElementById('response-detail-modal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 200);
+    }
+
+    async function deleteResponse(id) {
+      if (!confirm('هل أنت متأكد من حذف هذا الرد نهائياً من قاعدة البيانات؟')) return;
+
+      if (apiBaseUrl !== null && adminSessionToken) {
+        try {
+          await fetch(`${apiBaseUrl}/api/responses/${encodeURIComponent(id)}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${adminSessionToken}` }
+          });
+        } catch (err) {
+          console.warn('SQLite delete warning:', err);
+        }
+      }
+
+      const q = getLocalStorageList('gf_unsynced_queue').filter(item => item.id !== id);
+      localStorage.setItem('gf_unsynced_queue', JSON.stringify(q));
+
+      const updated = currentResponses.filter(item => item.id !== id);
+      currentResponses = updated;
+      saveLocalResponsesCache(updated);
+      await saveIDBResponses(updated);
+      await renderAdminDashboard();
+    }
+
+    async function clearAllDataConfirm() {
+      if (!confirm('تحذير: هل أنت متأكد من حذف كافة الردود المسجلة نهائياً؟')) return;
+
+      if (apiBaseUrl !== null && adminSessionToken) {
+        try {
+          await fetch(`${apiBaseUrl}/api/responses`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${adminSessionToken}` }
+          });
+        } catch (err) {
+          console.warn('SQLite clear warning:', err);
+        }
+      }
+
+      currentResponses = [];
+      saveLocalResponsesCache([]);
+      localStorage.removeItem('gf_unsynced_queue');
+      LEGACY_STORAGE_KEYS.forEach(k => localStorage.removeItem(k));
+      await saveIDBResponses([]);
+      await renderAdminDashboard();
+    }
+
+    function exportToCSV() {
+      const list = currentResponses;
+      if (list.length === 0) {
+        alert('لا توجد ردود لتصديرها.');
+        return;
+      }
+
+      const headers = [
+        "معرف الرد", "التاريخ والوقت", "حساب Google", "الاسم الكامل", "القسم / التخصص الدراسي", 
+        "السنة الدراسية", "يوزر تلغرام", 
+        "هل لديك خبرة سابقة؟", "اللغات أو التقنيات المعروفة", 
+        "المجالات التي تثير اهتمامك", "المشاركة في لجان التنظيم", 
+        "الإمكانيات أو المهارات المقدمة", "المجالات المرغوب تعلمها حضورياً"
+      ];
+
+      const rows = [];
+      rows.push(headers.map(h => `"${h.replace(/"/g, '""')}"`).join(','));
+
+      list.forEach(item => {
+        const row = [
+          item.id || '',
+          item.timestamp || '',
+          item.account || '',
+          item.fullName || '',
+          item.major || '',
+          item.academicYear || '',
+          item.telegramUser || '',
+          item.hasExperience || '',
+          item.knownTech || '',
+          Array.isArray(item.interestDomains) ? item.interestDomains.join(' | ') : (item.interestDomains || ''),
+          item.committeeJoin || '',
+          item.offeredSkills || '',
+          Array.isArray(item.learningTopics) ? item.learningTopics.join(' | ') : (item.learningTopics || '')
+        ];
+        rows.push(row.map(c => `"${String(c).replace(/"/g, '""')}"`).join(','));
+      });
+
+      // UTF-8 BOM for Arabic compatibility in Microsoft Excel
+      const csvContent = '\uFEFF' + rows.join('\r\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `Coding_AI_Responses_${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // JSON Backup & Restore
+    function exportBackupJSON() {
+      if (currentResponses.length === 0) {
+        alert('لا توجد بيانات لنسخها احتياطياً.');
+        return;
+      }
+      const blob = new Blob([JSON.stringify(currentResponses, null, 2)], { type: 'application/json;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `Coding_AI_Backup_${new Date().toISOString().slice(0, 10)}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    async function importBackupJSON(event) {
+      const file = event.target.files?.[0];
+      event.target.value = '';
+      if (!file) return;
+
+      try {
+        const text = await file.text();
+        const parsed = JSON.parse(text);
+        const importedItems = Array.isArray(parsed) ? parsed : (parsed.responses || []);
+        if (!Array.isArray(importedItems) || importedItems.length === 0) {
+          alert('الملف لا يحتوي على سجلات صالحة.');
+          return;
+        }
+
+        const merged = mergeUniqueLists(importedItems, currentResponses);
+        saveLocalResponsesCache(merged);
+        await saveIDBResponses(merged);
+
+        if (apiBaseUrl !== null && adminSessionToken) {
+          await fetch(`${apiBaseUrl}/api/sync-import`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${adminSessionToken}`
+            },
+            body: JSON.stringify({ responses: merged })
+          });
+        }
+
+        await renderAdminDashboard();
+        alert(`تمت استعادة ودمج ${importedItems.length} سجل بنجاح!`);
+      } catch (err) {
+        alert('تعذر قراءة ملف النسخة الاحتياطية: تأكد من أنه ملف JSON صالح.');
+      }
+    }
+
+    // Google Sheets Two-Way Sync
+    async function syncWithGoogleSheet() {
+      const sheetUrl = getSheetUrl();
+      if (!sheetUrl || !sheetUrl.startsWith('http')) {
+        openSheetConfigModal();
+        return;
+      }
+
+      const btn = document.getElementById('sync-sheet-btn');
+      btn.disabled = true;
+      try {
+        // 1. سحب البيانات من Google Sheet
+        const sep = sheetUrl.includes('?') ? '&' : '?';
+        const res = await fetch(`${sheetUrl}${sep}action=list`);
+        const data = await res.json();
+        const sheetRows = (data && data.ok && Array.isArray(data.responses)) ? data.responses : [];
+
+        // 2. دمجها مع السجلات الحالية
+        const merged = mergeUniqueLists(currentResponses, sheetRows);
+        saveLocalResponsesCache(merged);
+        await saveIDBResponses(merged);
+
+        if (apiBaseUrl !== null && adminSessionToken) {
+          await fetch(`${apiBaseUrl}/api/sync-import`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${adminSessionToken}`
+            },
+            body: JSON.stringify({ responses: merged })
+          });
+        }
+
+        // 3. رفع أي سجلات محلية ناقصة إلى Google Sheet
+        const sheetIds = new Set(sheetRows.map(r => String(r.id)));
+        const missingOnSheet = currentResponses.filter(r => !sheetIds.has(String(r.id)));
+        for (const rec of missingOnSheet) {
+          await fetch(sheetUrl, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(rec)
+          });
+        }
+
+        await renderAdminDashboard();
+        alert(`تمت المزامنة بنجاح! (تم استيراد ${sheetRows.length} سجل من Google Sheet ورفع ${missingOnSheet.length} سجل ناقص)`);
+      } catch (err) {
+        alert('تعذر الاتصال بـ Google Sheet. تأكد من نشر Google Apps Script بصلاحية "Anyone" واستخدام أحدث كود من google-apps-script.js.');
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    // Google Sheets Config
+    function openSheetConfigModal() {
+      document.getElementById('sheet-url-input').value = getSheetUrl();
+      const modal = document.getElementById('sheet-config-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => modal.classList.remove('opacity-0'), 10);
+    }
+
+    function closeSheetConfigModal() {
+      const modal = document.getElementById('sheet-config-modal');
+      modal.classList.add('opacity-0');
+      setTimeout(() => modal.classList.add('hidden'), 200);
+    }
+
+    async function saveSheetUrl() {
+      const val = document.getElementById('sheet-url-input').value.trim();
+      localStorage.setItem(SHEET_URL_KEY, val);
+      if (apiBaseUrl !== null && adminSessionToken) {
+        try {
+          await fetch(`${apiBaseUrl}/api/config`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${adminSessionToken}`
+            },
+            body: JSON.stringify({ sheetUrl: val })
+          });
+        } catch (err) {
+          console.warn('Could not save sheetUrl to SQLite:', err);
+        }
+      }
+      alert('تم حفظ رابط Google Sheet بنجاح!');
+      closeSheetConfigModal();
+      await renderAdminDashboard();
+    }
+
+    // Add Demo Data with Telegram usernames
+    async function addDemoData() {
+      const samples = [
+        {
+          fullName: "محمد الأمين بوزيد",
+          major: "إعلام آلي",
+          academicYear: "سنة ثانية",
+          telegramUser: "@amine_coder24",
+          hasExperience: "نعم",
+          knownTech: "Python, C++, HTML/CSS, Git",
+          interestDomains: ["🐺 الذكاء الاصطناعي", "🌐 تطوير الويب"],
+          committeeJoin: "نعم",
+          offeredSkills: "👨‍🏫 المساعدة في البرمجة أو التدريب",
+          learningTopics: ["🐺 الذكاء الاصطناعي وتعلم الآلة AI/ML", "💻 أساسيات البرمجة Python/C/C++"]
+        },
+        {
+          fullName: "سارة بلحاج",
+          major: "رياضيات",
+          academicYear: "سنة أولى",
+          telegramUser: "@sara_maths",
+          hasExperience: "لا",
+          knownTech: "—",
+          interestDomains: ["📊 تحليل البيانات", "🐺 الذكاء الاصطناعي"],
+          committeeJoin: "ربما لاحقاً",
+          offeredSkills: "🎨 تصميم الملصقات والمنشورات",
+          learningTopics: ["📊 تحليل البيانات Data Science", "🧠 التفكير الخوارزمي"]
+        },
+        {
+          fullName: "عبد الرحمن بن علي",
+          major: "علوم الطبيعة والحياة",
+          academicYear: "سنة ثالثة",
+          telegramUser: "@abdo_bio_ai",
+          hasExperience: "لا",
+          knownTech: "—",
+          interestDomains: ["📱 تطوير تطبيقات الموبايل", "🔐 الأمن السيبراني"],
+          committeeJoin: "نعم",
+          offeredSkills: "🎤 تنظيم الأنشطة والفعاليات",
+          learningTopics: ["📱 تطوير تطبيقات الموبايل Flutter/Android", "💬 مهارات العرض والتقديم"]
+        }
+      ];
+
+      const created = samples.map((s, idx) => ({
+        id: 'GF-' + (Date.now() + idx).toString(36).toUpperCase(),
+        timestamp: new Date().toLocaleString('ar-DZ', { dateStyle: 'short', timeStyle: 'short' }),
+        account: "student.sample@gmail.com",
+        fullName: s.fullName,
+        major: s.major,
+        academicYear: s.academicYear,
+        telegramUser: s.telegramUser,
+        hasExperience: s.hasExperience,
+        knownTech: s.knownTech,
+        interestDomains: s.interestDomains,
+        committeeJoin: s.committeeJoin,
+        offeredSkills: s.offeredSkills,
+        learningTopics: s.learningTopics
+      }));
+
+      const merged = mergeUniqueLists(created, currentResponses);
+      saveLocalResponsesCache(merged);
+      await saveIDBResponses(merged);
+
+      if (apiBaseUrl !== null && adminSessionToken) {
+        await fetch(`${apiBaseUrl}/api/sync-import`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${adminSessionToken}`
+          },
+          body: JSON.stringify({ responses: created })
+        });
+      }
+
+      await renderAdminDashboard();
+      alert('تمت إضافة 3 عينات تجريبية وحفظها في قاعدة البيانات بنجاح!');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // Initialize Lucide Icons on start
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
